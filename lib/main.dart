@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() {
   runApp(MaterialApp(home: NinjaCard()));
@@ -11,6 +12,11 @@ class NinjaCard extends StatefulWidget {
 
 class _NinjaCardState extends State<NinjaCard> {
   int ninjaLevel = 0;
+  List<Quote> quotes = [
+    Quote(text: 'blah', author: 'chris'),
+    Quote(text: 'abc', author: 'chris'),
+    Quote(text: 'def', author: 'chris'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,46 +40,9 @@ class _NinjaCardState extends State<NinjaCard> {
           padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/175x158.jpg'),
-                  radius: 40,
-                ),
-              ),
-              Divider(height: 60, color: Colors.grey[800]),
-              Text('NAME',
-                  style: TextStyle(color: Colors.grey, letterSpacing: 2)),
-              SizedBox(height: 10),
-              Text('Chun-Li',
-                  style: TextStyle(
-                      color: Colors.amberAccent[200],
-                      letterSpacing: 2,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold)),
-              SizedBox(height: 30),
-              Text('CURRENT NINJA LEVEL',
-                  style: TextStyle(color: Colors.grey, letterSpacing: 2)),
-              SizedBox(height: 10),
-              Text('$ninjaLevel',
-                  style: TextStyle(
-                      color: Colors.amberAccent[200],
-                      letterSpacing: 2,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold)),
-              SizedBox(height: 30),
-              Row(
-                children: <Widget>[
-                  Icon(Icons.email, color: Colors.grey[400]),
-                  SizedBox(width: 10),
-                  Text('chun.li@abc.com',
-                      style: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 18,
-                          letterSpacing: 1))
-                ],
-              )
-            ],
+            children: quotes
+                .map((quote) => Text('${quote.text} - ${quote.author}'))
+                .toList(),
           )),
     );
   }
