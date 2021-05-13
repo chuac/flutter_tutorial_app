@@ -1,53 +1,64 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: Home()));
+  runApp(MaterialApp(home: NinjaCard()));
 }
 
-class Home extends StatelessWidget {
+class NinjaCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text('my first app'),
+        title: Text('Ninja ID Card'),
         centerTitle: true,
-        backgroundColor: Colors.red[600],
+        backgroundColor: Colors.grey[850],
       ),
-      body: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        // crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            flex: 3,
-            child: Container(
-              color: Colors.cyan,
-              padding: EdgeInsets.all(30),
-              child: Text('one'),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              color: Colors.green,
-              padding: EdgeInsets.all(30),
-              child: Text('two'),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              color: Colors.red,
-              padding: EdgeInsets.all(30),
-              child: Text('three'),
-            ),
-          )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Text('click'),
-        backgroundColor: Colors.red[600],
-      ),
+      body: Padding(
+          padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Center(
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('assets/175x158.jpg'),
+                  radius: 40,
+                ),
+              ),
+              Divider(height: 60, color: Colors.grey[800]),
+              Text('NAME',
+                  style: TextStyle(color: Colors.grey, letterSpacing: 2)),
+              SizedBox(height: 10),
+              Text('Chun-Li',
+                  style: TextStyle(
+                      color: Colors.amberAccent[200],
+                      letterSpacing: 2,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold)),
+              SizedBox(height: 30),
+              Text('CURRENT NINJA LEVEL',
+                  style: TextStyle(color: Colors.grey, letterSpacing: 2)),
+              SizedBox(height: 10),
+              Text('8',
+                  style: TextStyle(
+                      color: Colors.amberAccent[200],
+                      letterSpacing: 2,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold)),
+              SizedBox(height: 30),
+              Row(
+                children: <Widget>[
+                  Icon(Icons.email, color: Colors.grey[400]),
+                  SizedBox(width: 10),
+                  Text('chun.li@abc.com',
+                      style: TextStyle(
+                          color: Colors.grey[400],
+                          fontSize: 18,
+                          letterSpacing: 1))
+                ],
+              )
+            ],
+          )),
     );
   }
 }
