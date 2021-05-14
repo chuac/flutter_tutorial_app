@@ -19,10 +19,6 @@ class _NinjaCardState extends State<NinjaCard> {
     Quote(text: 'blahblah blahblah blah', author: 'chris'),
   ];
 
-  Widget quoteTemplate(Quote quote) {
-    return QuoteCard(quote: quote);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +40,15 @@ class _NinjaCardState extends State<NinjaCard> {
       body: Padding(
           padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
           child: Column(
-            children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+            children: quotes
+                .map((quote) => QuoteCard(
+                    quote: quote,
+                    delete: () {
+                      setState(() {
+                        quotes.remove(quote);
+                      });
+                    }))
+                .toList(),
           )),
     );
   }
